@@ -9,30 +9,32 @@
 <body>
 
   <div id="app">
-    <h3>{{ title }} = {{ counter }}</h3>
-    <button v-on:click="riseCounter(5, 'Изменено на 5', $event)">Увеличить на 5</button>
-    <button v-on:click="riseCounter(10, 'Изменено на 10', $event)">Увеличить на 10</button>
+      <h2>
+        <a href="http://ya.ru" target="_blank" v-on:click.prevent="">Ya.ru</a>
+      </h2>
+
+      <h2 v-on:mousemove="hanleMouseMove">
+        X: {{ x }} | Y: {{ y }}
+
+        <span v-on:mousemove.stop="">Не изменять</span>
+      </h2>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script type="text/javascript">
-
+      // prevent - аналог event.prventDefault()
+      // stop - аналог event.stopPropagation();
       new Vue({
         el: '#app',
         data: {
           counter: 0,
-          title: 'Счетчик'
+          x: 0,
+          y: 0
         },
         methods: {
-          riseCounter: function(num, str, event){
-            this.counter += num;
-            this. title = str
-
-            if(num == 5){
-              event.target.style.color = 'blue';
-            }else if(num == 10){
-              event.target.style.color = 'red';
-            }
+          hanleMouseMove(event){
+            this.x = event.clientX;
+            this.y = event.clientY;
           }
         }
       })
