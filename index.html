@@ -18,12 +18,17 @@
 
         <span v-on:mousemove.stop="">Не изменять</span>
       </h2>
+
+      <hr>
+
+      <input type="text" v-on:keyup.enter.space="alertValue">
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script type="text/javascript">
       // prevent - аналог event.prventDefault()
       // stop - аналог event.stopPropagation();
+      // enter - аналог eventkeycode === 13, space - пробел
       new Vue({
         el: '#app',
         data: {
@@ -32,9 +37,12 @@
           y: 0
         },
         methods: {
-          hanleMouseMove(event){
+          hanleMouseMove: function(event){
             this.x = event.clientX;
             this.y = event.clientY;
+          },
+          alertValue: function(event){
+            alert(event.target.value)
           }
         }
       })
