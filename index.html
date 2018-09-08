@@ -10,40 +10,27 @@
 
   <div id="app">
       <h2>
-        <a href="http://ya.ru" target="_blank" v-on:click.prevent="">Ya.ru</a>
+        <a :href="url">Ya.ru</a>
       </h2>
 
-      <h2 v-on:mousemove="hanleMouseMove">
-        X: {{ x }} | Y: {{ y }}
-
-        <span v-on:mousemove.stop="">Не изменять</span>
+      <h2>
+        Counter: {{ counter }}
       </h2>
 
-      <hr>
-
-      <input type="text" v-on:keyup.enter.space="alertValue">
+      <button @click="counter++">Rise</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script type="text/javascript">
-      // prevent - аналог event.prventDefault()
-      // stop - аналог event.stopPropagation();
-      // enter - аналог eventkeycode === 13, space - пробел
+
       new Vue({
         el: '#app',
         data: {
           counter: 0,
-          x: 0,
-          y: 0
+          url: 'http://ya.ru'
         },
         methods: {
-          hanleMouseMove: function(event){
-            this.x = event.clientX;
-            this.y = event.clientY;
-          },
-          alertValue: function(event){
-            alert(event.target.value)
-          }
+
         }
       })
 
