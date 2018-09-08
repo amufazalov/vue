@@ -8,14 +8,22 @@
 <body>
 
 <div id="app">
+  <!-- in or of -->
+  <ul>
+    <li v-for="(person, index) in people">{{ index + 1 }}. {{ person.name }} - <b> {{ person.age }}</b></li>
+  </ul>
 
-    <h1 v-show="isVisible">I am isVisible!</h1>
-    <h2 v-show="!isVisible">You can't see me!</h2>
+  <hr>
 
-    <hr>
+  <ol>
+    <li v-for="num of 3">{{ num }}</li>
+  </ol>
 
-    <button type="button" name="button" @click="isVisible = !isVisible">Toggle</button>
+  <hr>
 
+  <ul>
+    <li v-for="(value, key, index) in person"><em>{{ index + 1}}</em> <b>{{ key }}</b> - {{ value }}</li>
+  </ul>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
@@ -24,7 +32,17 @@
     new Vue({
       el: '#app',
       data: {
-        isVisible: true
+        people: [
+           {name: 'Vlad', age: 20},
+           {name: 'Max', age: 30},
+           {name: 'Elena', age: 40},
+        ],
+
+        person: {
+          name: 'Max',
+          age: 50,
+          job: 'Frontend'
+        }
       },
       methods: {
 
