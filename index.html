@@ -8,27 +8,13 @@
 <body>
 
 <div id="app">
-    <!-- если isActive то будет добавлен класс red -->
-    <h2 v-if="type === 'a'">A</h2>
-    <h2 v-else-if="type === 'b'">B</h2>
-    <h2 v-else-if="type === 'c'">C</h2>
-    <h2 v-else>Not match</h2>
+
+    <h1 v-show="isVisible">I am isVisible!</h1>
+    <h2 v-show="!isVisible">You can't see me!</h2>
 
     <hr>
 
-    <input type="text" v-model="type">
-
-    <hr>
-
-<!-- template испоьзуется для группировки в html5 -->
-<template v-if="isVisible">
-    <h2>I am title</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, fugiat!</p>
-</template>
-<template v-else>
-    <h2 style="color: red">I am title</h2>
-    <p style="color: blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, rerum.</p>
-</template>
+    <button type="button" name="button" @click="isVisible = !isVisible">Toggle</button>
 
 </div>
 
@@ -38,7 +24,6 @@
     new Vue({
       el: '#app',
       data: {
-        type: 'c',
         isVisible: true
       },
       methods: {
