@@ -9,15 +9,11 @@
 <body>
 
   <div id="app">
-      <h2>
-        <a :href="url">Ya.ru</a>
-      </h2>
+      <!-- Оптимизация с фокусом -->
+      <input type="text" v-model.lazy="inputValue">
 
-      <h2>
-        Counter: {{ counter }}
-      </h2>
+      <h2>{{ inputValue }}</h2>
 
-      <button @click="counter++">Rise</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -26,8 +22,7 @@
       new Vue({
         el: '#app',
         data: {
-          counter: 0,
-          url: 'http://ya.ru'
+          inputValue: 'Initial Value'
         },
         methods: {
 
