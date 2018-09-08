@@ -8,49 +8,29 @@
 <body>
 
 <div id="app">
-  <h2>{{ title }}</h2>
-  <button @click="title = 'Updated title'">Updated title</button>
+  <h2 ref="heading">{{ title }}</h2>
+  <button @click="updateFirstTitle">Update title</button>
+
+  <hr ref="horLine">
 </div>
 
-<hr>
-
-<div id="app2">
-  <h2>{{ title }}</h2>
-  <button @click="updateFirstTitle">Update First Title</button>
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 <script>
 
-    var vue1 = new Vue({
+    new Vue({
       el: '#app',
       data: {
         title: "Hello! I am Vue!"
       },
+      // $refs - сист. переменная. Референция на дом элемент
       methods:{
-        alertFast(){
-          alert('I am from vue 1');
-        }
-      }
-    })
-
-    console.log(vue1);
-    vue1.newField = 'Random text'
-
-    var vue2 = new Vue({
-      el: '#app2',
-      data: {
-        title: "Hello! From Vue2!"
-      },
-      methods: {
         updateFirstTitle(){
-          //Обращаемся к data.title
-          vue1.title = 'Updated from second app',
-          vue1.newField = 'New newField'
-
-          setTimeout(function(){
-            vue1.alertFast()
-          },1000)
+          this.title = 'New title!',
+          this.$refs.heading.style.color = 'red'
+          this.$refs.horLine.style.color = 'blue'
+          console.log(this.$refs);
+          console.log(document.querySelector('hr'))
         }
       }
     })
