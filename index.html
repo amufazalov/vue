@@ -8,22 +8,58 @@
 <body>
 
 <div id="app">
-
+  <h2 ref="heading">{{ title }}</h2>
+  <button @click="title = 'Change title'">change title</button>
+  <button @click='doDestroy'>Destroy</button>
 </div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 <script>
 
-    //При использовании template должен быть оборачивающий div
-    var vue = new Vue({
+    new Vue({
+      el: '#app',
       data: {
         title: "Hello! I am Vue!"
       },
-      template: '<div><h1>{{ title }}</h1><p>Lorem ipm iste facilis.</p></div>'
+      methods:{
+        doDestroy: function(){
+          this.$destroy()
+        }
+      },
+      //переод создание Vue
+      beforeCreate: function(){
+        console.log('1 beforeCreate');
+      },
+      //Создание
+      created: function(){
+        console.log('2 created');
+      },
+      //Начинает анализ DOM и готовится вставить
+      beforeMount: function(){
+        console.log('3 beforeMount');
+      },
+      //вставил скомпилированный шаблон
+      mounted: function(){
+        console.log('4 mounted');
+      },
+      //Перед изменением
+      beforeUpdate: function(){
+        console.log('beforeUpdate');
+      },
+      updated: function(){
+        console.log('updated');
+      },
+      //Удаление или уничтожение компонента
+      beforeDestroy: function(){
+        console.log('beforeDestroy');
+      },
+      destroyed: function(){
+        console.log('destroyed');
+      },
     })
 
-    vue.$mount('#app');
+
 
 </script>
 </body>
