@@ -8,32 +8,22 @@
 <body>
 
 <div id="app">
-  <h2 ref="heading">{{ title }}</h2>
-  <button @click="updateFirstTitle">Update title</button>
 
-  <hr ref="horLine">
 </div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 <script>
 
-    new Vue({
-      el: '#app',
+    //При использовании template должен быть оборачивающий div
+    var vue = new Vue({
       data: {
         title: "Hello! I am Vue!"
       },
-      // $refs - сист. переменная. Референция на дом элемент
-      methods:{
-        updateFirstTitle(){
-          this.title = 'New title!',
-          this.$refs.heading.style.color = 'red'
-          this.$refs.horLine.style.color = 'blue'
-          console.log(this.$refs);
-          console.log(document.querySelector('hr'))
-        }
-      }
+      template: '<div><h1>{{ title }}</h1><p>Lorem ipm iste facilis.</p></div>'
     })
+
+    vue.$mount('#app');
 
 </script>
 </body>
