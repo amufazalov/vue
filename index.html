@@ -9,13 +9,7 @@
 <body>
 
   <div id="app">
-    <input type="text" v-on:input="changeName">
-    <h1>string: {{ name }}</h1>
-    <h1>Sum: {{ 10 + 60 }}</h1>
-    <h1>Number: {{ number }}</h1>
-    <h1>Method: {{ sayHello() }}</h1>
-    <h1>If statement: {{ isOk ? 'I am ok' : 'I am not Ok!'}}</h1>
-    <h1>Functions: {{ string.split('').reverse().join('') }}</h1>
+    <h2><a v-bind:href="url">{{ url }}</a></h2>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -24,16 +18,9 @@
       new Vue({
         el: '#app',
         data: {
-          name: 'Vasya!',
-          number: 100,
-          isOk: false,
-          string: 'My name is Vlad'
+          url: 'http://ya.ru'
         },
-        methods: {
-          sayHello: function(){
-            return 'I am function'
-          }
-        }
+
       })
 
   </script>
