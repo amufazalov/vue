@@ -9,7 +9,7 @@
 <body>
 
   <div id="app">
-    <h2><a v-bind:href="url">{{ url }}</a></h2>
+    <h2 v-html="link"></h2>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -18,9 +18,8 @@
       new Vue({
         el: '#app',
         data: {
-          url: 'http://ya.ru'
-        },
-
+          link: '<a href="http://ya.ru">Yandex</a>'
+        }
       })
 
   </script>
