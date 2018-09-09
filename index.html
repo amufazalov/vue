@@ -38,25 +38,6 @@
         }
       }
 
-    //Регистрация компонента глобально
-    // Vue.component('my-counter', {
-    //     template: `
-    //       <div style="border:1px solid black;padding:15px">
-    //         <h2>Counter: {{ counter }}</h2>
-    //         <button type="button" name="button" @click="add">Add to counter</button>
-    //       </div>
-    //     `,
-    //     data: function(){
-    //       return {
-    //         counter: 0
-    //       }
-    //     },
-    //     methods:{
-    //       add(){
-    //         this.counter++
-    //       }
-    //     }
-    // })
 
     new Vue({
       el: '#app',
@@ -69,6 +50,10 @@
     //Будет ошибка, т.к. ничего не знает
     new Vue({
       el: '#app2',
+      components: {
+        //Форма CamelCase
+        myCounter: component
+      }
     })
   </script>
 </body>
