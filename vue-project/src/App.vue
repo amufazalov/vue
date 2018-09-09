@@ -6,7 +6,8 @@
     <app-car
       :carYear="carYear"
       :carName="carName"
-       @nameChanged="carName = $event" 
+      :changeFunc="changeNameToAudi"
+       @nameChanged="carName = $event"
     >
      </app-car>
   </div>
@@ -21,6 +22,11 @@ export default {
     return {
       carName: 'Ford',
       carYear: 2018
+    }
+  },
+  methods: {
+    changeNameToAudi(){
+      this.carName = 'Audi'
     }
   },
   //регистрация локально

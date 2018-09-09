@@ -3,6 +3,7 @@
     <h3>Name: {{ carName }} \ {{ reverseName }}</h3>
     <p>Year: {{ carYear }}</p>
     <button type="button" name="button" @click='changeName'>ChangeName</button>
+    <button type="button" name="button" @click='changeFunc()'>Change From parent</button>
   </div>
 </template>
 
@@ -14,7 +15,8 @@ export default {
       //required: true,
       default: 'DefaultName'
     },
-    carYear: Number
+    carYear: Number,
+    changeFunc: Function
   },
   methods: {
     changeName(){
