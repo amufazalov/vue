@@ -1,8 +1,9 @@
 <template>
   <!-- Корневой элемент! -->
   <div>
-    <h1>{{ msg }}</h1>
-    <app-car></app-car>
+    <h1>Parent: {{ carName }}</h1>
+    <!-- Передача параметров -->
+    <app-car :carName="carName" :carYear="carYear"></app-car>
   </div>
 </template>
 
@@ -13,7 +14,8 @@ import Car from './Car.vue'
 export default {
   data () {
     return {
-      msg: 'Welcome'
+      carName: 'Ford from parent',
+      carYear: 2018
     }
   },
   //регистрация локально
