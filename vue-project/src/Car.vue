@@ -2,18 +2,12 @@
   <div class="car">
     <h3>Name: {{ carName }} \ {{ reverseName }}</h3>
     <p>Year: {{ carYear }}</p>
+    <button type="button" name="button" @click='changeName'>ChangeName</button>
   </div>
 </template>
 
 <script>
 export default {
-  //нзв входящего параметра
-  //props: ['carName', 'carYear'],
-  //Validation
-  // props: {
-  //   carName: String,
-  //   carYear: Number
-  // },
   props: {
     carName: {
       type: String,
@@ -21,6 +15,15 @@ export default {
       default: 'DefaultName'
     },
     carYear: Number
+  },
+  methods: {
+    changeName(){
+      this.carName = 'Mazda',
+      //Обращение к род. параметру
+      // 1 - кастомное название события
+      // 2 - к чем обращаемся
+      this.$emit('nameChanged', this.carName)
+    }
   },
   computed: {
     reverseName(){

@@ -3,8 +3,12 @@
   <div>
     <h1>Parent: {{ carName }}</h1>
     <!-- Передача параметров -->
-    <!-- :carName="carName" -->
-    <app-car  :carYear="carYear"></app-car>
+    <app-car
+      :carYear="carYear"
+      :carName="carName"
+       @nameChanged="carName = $event" 
+    >
+     </app-car>
   </div>
 </template>
 
