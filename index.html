@@ -8,11 +8,17 @@
 </head>
 <body>
   <div id="app">
-      <my-counter v-for="c in 5"></my-counter>
+      <my-counter v-for="c in 3"></my-counter>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script type="text/javascript">
 
+
+    var dataObj = {
+      counter: 0
+    }
+
     //Регистрация компонента до инициализации приложения
+    //метод дата возвращает новый объект, а если указать объект заранее подготовленный, то будет обращение по ссылке
     Vue.component('my-counter', {
         template: `
           <div style="border:1px solid black;padding:15px">
@@ -20,10 +26,8 @@
             <button type="button" name="button" @click="add">Add to counter</button>
           </div>
         `,
-        data:function(){
-          return {
-            counter: 0
-          }
+        data: function(){
+          return dataObj;
         },
         methods:{
           add(){
