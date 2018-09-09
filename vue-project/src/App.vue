@@ -3,10 +3,9 @@
   <div>
     <h1>Parent: {{ carName }}</h1>
     <!-- Передача параметров -->
-    <app-counter :counter="counter"></app-counter>
+    <app-counter></app-counter>
 
     <app-car
-      :counter="counter"
       :carYear="carYear"
       :carName="carName"
       :changeFunc="changeNameToAudi"
@@ -26,8 +25,7 @@ export default {
   data () {
     return {
       carName: 'Ford',
-      carYear: 2018,
-      counter: 0
+      carYear: 2018
     }
   },
   methods: {

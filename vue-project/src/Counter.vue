@@ -3,8 +3,20 @@
 </template>
 
 <script>
+import {eventEmitter} from './main'
+
 export default {
-  props: ['counter']
+  data(){
+    return {
+      counter: 0
+    }
+  },
+  created(){
+    //получаем параметр из Car eventEmitter.$emit('counterUpdated', 3)
+    eventEmitter.$on('counterUpdated', (num) => {
+      this.counter += num
+    })
+  }
 }
 </script>
 
