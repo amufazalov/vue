@@ -8,18 +8,18 @@
 </head>
 <body>
   <div id="app">
-      <my-counter v-for="c in 3"></my-counter>
+    <my-counter v-for="c in 3"></my-counter>
+  </div>
+  <hr>
+  <div id="app2">
+    <my-counter></my-counter>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script type="text/javascript">
 
-
-    var dataObj = {
-      counter: 0
-    }
-
-    //Регистрация компонента до инициализации приложения
-    //метод дата возвращает новый объект, а если указать объект заранее подготовленный, то будет обращение по ссылке
-    Vue.component('my-counter', {
+    //Объект конфигурации
+    var component = {
         template: `
           <div style="border:1px solid black;padding:15px">
             <h2>Counter: {{ counter }}</h2>
@@ -27,17 +27,48 @@
           </div>
         `,
         data: function(){
-          return dataObj;
+          return {
+            counter: 0
+          }
         },
         methods:{
           add(){
             this.counter++
           }
         }
-    })
+      }
+
+    //Регистрация компонента глобально
+    // Vue.component('my-counter', {
+    //     template: `
+    //       <div style="border:1px solid black;padding:15px">
+    //         <h2>Counter: {{ counter }}</h2>
+    //         <button type="button" name="button" @click="add">Add to counter</button>
+    //       </div>
+    //     `,
+    //     data: function(){
+    //       return {
+    //         counter: 0
+    //       }
+    //     },
+    //     methods:{
+    //       add(){
+    //         this.counter++
+    //       }
+    //     }
+    // })
 
     new Vue({
       el: '#app',
+      //Регистрация локлаьно
+      components: {
+        'my-counter' : component
+      }
+    })
+
+    //Будет ошибка, т.к. ничего не знает
+    new Vue({
+      el: '#app2',
     })
   </script>
 </body>
