@@ -3,7 +3,8 @@
   <div>
     <h1>Parent: {{ carName }}</h1>
     <!-- Передача параметров -->
-    <app-car :carName="carName" :carYear="carYear"></app-car>
+    <!-- :carName="carName" -->
+    <app-car  :carYear="carYear"></app-car>
   </div>
 </template>
 
@@ -14,7 +15,7 @@ import Car from './Car.vue'
 export default {
   data () {
     return {
-      carName: 'Ford from parent',
+      carName: 'Ford',
       carYear: 2018
     }
   },
