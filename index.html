@@ -1,66 +1,40 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Vue JS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VueJs Components</title>
 </head>
 <body>
+  <div id="app">
+      <my-counter v-for="c in 5"></my-counter>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type="text/javascript">
 
-<div id="app">
-  <h2 ref="heading">{{ title }}</h2>
-  <button @click="title = 'Change title'">change title</button>
-  <button @click='doDestroy'>Destroy</button>
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
-<script>
+    //Регистрация компонента до инициализации приложения
+    Vue.component('my-counter', {
+        template: `
+          <div style="border:1px solid black;padding:15px">
+            <h2>Counter: {{ counter }}</h2>
+            <button type="button" name="button" @click="add">Add to counter</button>
+          </div>
+        `,
+        data:function(){
+          return {
+            counter: 0
+          }
+        },
+        methods:{
+          add(){
+            this.counter++
+          }
+        }
+    })
 
     new Vue({
       el: '#app',
-      data: {
-        title: "Hello! I am Vue!"
-      },
-      methods:{
-        doDestroy: function(){
-          this.$destroy()
-        }
-      },
-      //переод создание Vue
-      beforeCreate: function(){
-        console.log('1 beforeCreate');
-      },
-      //Создание
-      created: function(){
-        console.log('2 created');
-      },
-      //Начинает анализ DOM и готовится вставить
-      beforeMount: function(){
-        console.log('3 beforeMount');
-      },
-      //вставил скомпилированный шаблон
-      mounted: function(){
-        console.log('4 mounted');
-      },
-      //Перед изменением
-      beforeUpdate: function(){
-        console.log('beforeUpdate');
-      },
-      updated: function(){
-        console.log('updated');
-      },
-      //Удаление или уничтожение компонента
-      beforeDestroy: function(){
-        console.log('beforeDestroy');
-      },
-      destroyed: function(){
-        console.log('destroyed');
-      },
     })
-
-
-
-</script>
+  </script>
 </body>
 </html>
