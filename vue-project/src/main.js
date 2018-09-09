@@ -10,3 +10,8 @@ new Vue({
   el: '#app',
     render: h => h(App)
 })
+
+
+//Шина событий
+//Получаем достуе к @emit и @on
+//export const eventEmmiter = new Vue()
