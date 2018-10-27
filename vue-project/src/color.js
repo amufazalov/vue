@@ -5,8 +5,21 @@ export default {
     //bindings - передаваемые свойства
     //vnode - объект вирт дерева в котором будет храниться директива
     bind(el, bindings, vnode){
-        console.log('bind')
-        const arg = bindings.arg; //получаеп :аргумент
-        el.style[arg] = bindings.value;
+        const fontModifier = bindings.modifiers['font']
+
+        if(fontModifier){
+            el.style.fontSize = '60px';
+        }
+
+        let delay = 0;
+        const delayModifier = bindings.modifiers['delay']
+        if(delayModifier){
+            delay = 2000;
+        }
+
+        setTimeout(() => {
+            const arg = bindings.arg; //получаеп :аргумент
+            el.style[arg] = bindings.value;
+        }, delay)
     }
 }
