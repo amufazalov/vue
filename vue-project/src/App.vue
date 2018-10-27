@@ -1,10 +1,10 @@
 <template>
   <!-- Корневой элемент! -->
   <div>
-    <h2 v-colored:background.font="'red'">{{ title }}</h2>
-    <h2 v-colored:color.delay="'blue'">{{ title }}</h2>
-    <h2 v-font>Local Font Directive</h2>
-
+    <h2>{{ title }}</h2>
+    <h2>{{ title | lowercase }}</h2>
+    <h2>{{ title | uppercase }}</h2>
+    <h2>{{ title | uppercase }}</h2>
   </div>
 </template>
 
@@ -16,17 +16,14 @@ import Car from './Car.vue'
 export default {
   data(){
     return {
-        title: 'Ford',
+        title: 'Привет всем!',
     }
   },
-    //ЛОКАЛЬНАЯ РЕГИСТРАЦИЯ ДИРЕКТИВЫ
-    directives: {
-      font: {
-          bind(el, bindings, vnode){
-              el.style.fontSize = '40px';
-          }
+  filters: {
+      lowercase(value){
+          return value.toLowerCase()
       }
-    }
+  }
 }
 </script>
 
