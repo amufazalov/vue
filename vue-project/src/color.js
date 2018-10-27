@@ -6,7 +6,7 @@ export default {
     //vnode - объект вирт дерева в котором будет храниться директива
     bind(el, bindings, vnode){
         console.log('bind')
-        //el.style.color = 'blue';
-        el.style.color = bindings.value;
+        const arg = bindings.arg; //получаеп :аргумент
+        el.style[arg] = bindings.value;
     }
 }
