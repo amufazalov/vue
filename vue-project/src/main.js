@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
-import ColorDirective from './color'
+import List from './List.vue'
 
 Vue.filter('uppercase', value => value.toUpperCase())
+
+Vue.component('app-list', List)
 
 //Шина событий
 //Получаем достуе к @emit и @on

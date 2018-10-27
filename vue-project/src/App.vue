@@ -8,34 +8,23 @@
     <ul>
       <li v-for="name of filterdNmaes">{{ name }}</li>
     </ul>
+
+    <hr>
+
+    <app-list></app-list>
   </div>
 </template>
 
 <script>
-//регистрация локально
-import Car from './Car.vue'
-//import Counter from './Counter.vue'
-
+    import ListMixin from './listMixin'
 export default {
   data(){
     return {
         title: 'Привет всем!',
-        searchName: '',
-        names: ['vlad', 'max', 'elena', 'igor']
     }
   },
-    computed: {
-      filterdNmaes(){
-          return this.names.filter(name => {
-              return name.toLowerCase().indexOf(this.searchName.toLowerCase()) !== -1
-          })
-      }
-    },
-  filters: {
-      lowercase(value){
-          return value.toLowerCase()
-      }
-  }
+    mixins: [ListMixin]
+
 }
 </script>
 
