@@ -1,7 +1,9 @@
 <template>
   <!-- Корневой элемент! -->
   <div>
-    <h2 v-colored>{{ title }}</h2>
+    <h2 v-colored v-if="visible">{{ title }}</h2>
+    <button @click="visible = !visible">toggle</button>
+    <button @click="title = 'New Title'">changed</button>
   </div>
 </template>
 
@@ -13,7 +15,8 @@ import Car from './Car.vue'
 export default {
   data(){
     return {
-      title: 'Ford'
+        title: 'Ford',
+        visible: true
     }
   }
 }
