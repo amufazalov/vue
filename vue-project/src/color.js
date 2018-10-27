@@ -6,22 +6,7 @@ export default {
     //vnode - объект вирт дерева в котором будет храниться директива
     bind(el, bindings, vnode){
         console.log('bind')
-        el.style.color = 'blue';
-    },
-
-    inserted(el, bindings, vnode){
-        console.log('inserted')
-    },
-
-    updated(el, bindings, vnode, oldVnode){
-        console.log('updated');
-    },
-
-    componentUpdated(el, bindings, vnode, oldVnode){
-        console.log('componentUpdated');
-    },
-
-    unbind(){
-        console.log('unbind');
+        //el.style.color = 'blue';
+        el.style.color = bindings.value;
     }
 }
