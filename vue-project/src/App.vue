@@ -1,10 +1,7 @@
 <template>
   <!-- Корневой элемент! -->
   <div>
-
-    <app-car>
-      <h2 slot="text">{{ carName }}</h2>
-    </app-car>
+    <h2 v-colored>{{ title }}</h2>
   </div>
 </template>
 
@@ -16,19 +13,12 @@ import Car from './Car.vue'
 export default {
   data(){
     return {
-      carName: 'Ford'
+      title: 'Ford'
     }
-  },
-  //регистрация локально
-  components: {
-    appCar: Car,
-    //appCounter: Counter
   }
 }
 </script>
 
 <style scoped>
-  h2 {
-    color: red
-  }
+
 </style>
