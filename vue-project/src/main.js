@@ -1,11 +1,11 @@
 import Vue from 'vue'
+import Vuelidate from 'vuelidate'
+
 import App from './App.vue'
 
-//Шина событий
-//Получаем достуе к @emit и @on
-export const eventEmitter = new Vue()
+Vue.use(Vuelidate);
 
 new Vue({
   el: '#app',
-    render: h => h(App)
+  render: h => h(App)
 })
