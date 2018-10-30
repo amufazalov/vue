@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <!--$v - отвечает за все валидации validate -->
-        <form class="pt-5">
+        <form class="pt-5" @submit.prevent="onSubmit">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input @blur="$v.email.$touch()"
@@ -42,6 +42,12 @@
                    Passwords should match
                 </div>
             </div>
+
+            <button
+                    class="btn btn-success"
+                    type="submit"
+                    :disabled="$v.$invalid"
+            >Submit</button>
         </form>
 
         <!--<pre>-->
@@ -61,6 +67,12 @@
                 confirmPassword: ''
             }
         },
+        methods: {
+            onSubmit(){
+                console.log('Email', this.email)
+                console.log('Password', this.password)
+            }
+        },
         validations: {
             email: {
                 required: required,
@@ -71,7 +83,7 @@
                         setTimeout(() => {
                             const value = newEmail !== 'test@mail.ru'
                             resolve(value)
-                        }, 3000)
+                        }, 1000)
                     })
                 }
             },
