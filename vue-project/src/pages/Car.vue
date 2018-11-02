@@ -5,16 +5,10 @@
         <button class="btn btn-sm btn-info" @click="goBackToCars">Back</button>
         <hr>
 
-<!--        <router-link
-                class="btn btn-primary"
-                tag="button"
-                :to="'/car/' + id + '/full'"
-        >Full info</router-link>-->
-
         <router-link
                 class="btn btn-primary"
                 tag="button"
-                :to="{ name: 'carFull', params: { id: id }}"
+                :to="{ name: 'carFull', params: { id: id }, query: {name:'Mazda', year:2000}}"
         >Full info</router-link>
 
         <hr>
