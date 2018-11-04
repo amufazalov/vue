@@ -1,53 +1,23 @@
 <template>
-    <div class="container pt-4">
-        <div class="form-group">
-            <label for="name">Car name</label>
-            <input type="text" id="name" class="form-control" v-model.trim="carName">
-        </div>
-
-        <div class="form-group">
-            <label for="year">Car year</label>
-            <input type="text" id="year" class="form-control" v-model.number="carYear">
-        </div>
-
-        <button class="btn btn-success" @click="createCar">Create Car</button>
-        <button class="btn btn-primary" @click="loadCars">Load Cars</button>
-
-        <hr>
-
-        <div class="list-group">
-            <li class="list-group-item" v-for="car of cars" :key="car.id"><strong>{{ car.name }}</strong> - {{ car.year }}</li>
-        </div>
+    <div class="container text-center pt-4">
+        <app-counter :counter="counter"></app-counter>
+        <app-actions @counterUpdated="counter += $event"></app-actions>
     </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                carName: '',
-                carYear: 2018,
-                cars: [],
-                resource: ''
-            }
-        },
-        methods: {
-            createCar(){
-                const car = {
-                    name: this.carName,
-                    year: this.carYear
-                }
-                //совпадает с db.json
-                this.resource.save({}, car)
-            },
-            loadCars(){
-                this.resource.get().then(response => response.json())
-                    .then(cars => this.cars = cars);
-            }
-        },
-        created() {
-            this.resource = this.$resource('cars')
-        }
+    import Counter from './Counter'
+    import Actions from './Actions'
 
+    export default {
+        data(){
+            return {
+                counter: 0
+            }
+        },
+        components: {
+            appCounter: Counter,
+            appActions: Actions
+        }
     }
 </script>
