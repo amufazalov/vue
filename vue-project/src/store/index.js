@@ -11,5 +11,11 @@ export default new Vuex.Store({
         computedCounter(state){
             return state.counter * (7 - 2 * (5 + 4))
         }
+    },
+    mutations: {
+        //Максимум передается 2 параметра. Если нужно больше, то второй должен быть объектом
+        changeCounter(state, payload){
+            state.counter += payload;
+        }
     }
 })
